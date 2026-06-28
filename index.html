@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyber Case File Deluxe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="noise"></div>
+
+  <section id="intro" class="screen active">
+    <div class="case-cover">
+      <div class="stamp">TOP SECRET</div>
+      <h1>CYBER CASE FILE DELUXE</h1>
+      <p>Hồ sơ điều tra sự cố an toàn thông tin</p>
+      <div class="case-meta">
+        <span>Mã hồ sơ: VAA-SOC-2035</span>
+        <span>Mức độ: CRITICAL</span>
+        <span>Đối tượng: SHADOWFOX</span>
+      </div>
+      <button class="primary" onclick="bootSystem()">TRUY CẬP HỆ THỐNG</button>
+      <button class="ghost" onclick="openHallFromIntro()">XEM BẢNG XẾP HẠNG</button>
+    </div>
+  </section>
+
+  <section id="boot" class="screen">
+    <div class="terminal big">
+      <div id="bootText"></div>
+      <div class="bar"><span id="bootBar"></span></div>
+    </div>
+  </section>
+
+  <section id="login" class="screen">
+    <div class="panel login-panel">
+      <h2>Đăng ký điều tra viên</h2>
+      <p>Nhập tên để bắt đầu nhiệm vụ. Điểm sẽ được lưu trên trình duyệt này.</p>
+      <input id="playerName" placeholder="Tên điều tra viên..." maxlength="28" />
+      <div class="row">
+        <button class="primary" onclick="createAgent()">XÁC NHẬN</button>
+        <button class="ghost" onclick="showScreen('intro')">QUAY LẠI</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="story" class="screen">
+    <div class="panel story-panel">
+      <div class="chapter" id="chapterLabel">CHƯƠNG 1</div>
+      <h2 id="storyTitle">Cuộc gọi lúc nửa đêm</h2>
+      <pre id="storyText"></pre>
+      <button id="storyBtn" class="primary hidden" onclick="startRun()">BẮT ĐẦU ĐIỀU TRA</button>
+    </div>
+  </section>
+
+  <section id="game" class="screen">
+    <aside class="hud">
+      <h3>CASE SYSTEM</h3>
+      <div class="agent-card">
+        <span>Điều tra viên</span>
+        <b id="hudName">---</b>
+        <small id="hudCode">SOC-0000</small>
+      </div>
+      <div class="metric"><span>Điểm</span><b id="hudScore">0</b></div>
+      <div class="metric"><span>Danh hiệu</span><b id="hudRank">Intern</b></div>
+      <div class="metric"><span>Câu</span><b id="hudProgress">1/15</b></div>
+      <label>Server HP</label>
+      <div class="meter hp"><span id="hpFill"></span></div>
+      <label>EXP</label>
+      <div class="meter xp"><span id="xpFill"></span></div>
+      <label>Combo</label>
+      <div class="combo" id="comboBox">x0</div>
+      <button class="side" onclick="renderDashboard()">DASHBOARD</button>
+      <button class="side" onclick="renderEvidence()">KHO BẰNG CHỨNG</button>
+      <button class="side" onclick="renderLeaderboard()">HALL OF FAME</button>
+      <button class="side danger" onclick="finishGame()">KẾT THÚC</button>
+    </aside>
+
+    <main class="game-main" id="gameMain"></main>
+  </section>
+
+  <section id="ending" class="screen">
+    <div class="panel end-panel" id="endingPanel"></div>
+  </section>
+
+  <script src="data/questions.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
